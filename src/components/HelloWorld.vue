@@ -1,25 +1,32 @@
 <template>
   <div class="hello">
     <h1>{{ count }}</h1>
+    <h1>{{ countStr }}</h1>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters, mapMutations } from 'vuex'
 
 export default {
   name: 'HelloWorld',
-  computed: mapState([
-      "count"
-  ]),
+  computed: {
+    ...mapState([
+        "count"
+    ]),
+    ...mapGetters([
+        "countStr"
+    ])
+  },
   created() {
     this.increment();
+    this.add(1000)
   },
   methods: {
-    increment() {
-      this.$store.commit("increment");
-      console.log(this.$store.state.count);
-    }
+    ...mapMutations([
+        "increment",
+        "add"
+    ])
   }
 }
 </script>
