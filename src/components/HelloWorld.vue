@@ -1,8 +1,6 @@
 <template>
   <div class="hello">
     <h1>{{ count }}</h1>
-    <h1>{{ countAlias }}</h1>
-    <h1>{{ countPlusLocalState }}</h1>
   </div>
 </template>
 
@@ -11,18 +9,9 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'HelloWorld',
-  data() {
-    return {
-      localCount: 100
-    }
-  },
-  computed: mapState({
-    count: state => state.count,
-    countAlias: "count",
-    countPlusLocalState(state) {
-      return state.count + this.localCount;
-    }
-  }),
+  computed: mapState([
+      "count"
+  ]),
   created() {
     this.increment();
   },
