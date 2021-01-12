@@ -6,7 +6,27 @@ Vue.config.productionTip = false
 
 Vue.use(Vuex)
 
+const studentStore = {
+  state: () => ({
+    students: [{
+      name: "Stu"
+    }]
+  })
+};
+
+const teacherStore = {
+  state: () => ({
+    teachers: [{
+      name: "Tch"
+    }]
+  })
+}
+
 const store = new Vuex.Store({
+  modules: {
+    student: studentStore,
+    teacher: teacherStore
+  },
   state: {
     count: 0
   },

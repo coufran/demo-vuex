@@ -2,6 +2,7 @@
   <div class="hello">
     <h1>{{ count }}</h1>
     <h1>{{ countStr }}</h1>
+    <h1>{{ studentName}}</h1>
   </div>
 </template>
 
@@ -11,6 +12,9 @@ import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 export default {
   name: 'HelloWorld',
   computed: {
+    studentName() {
+      return this.$store.state.student.students[0].name;
+    },
     ...mapState([
         "count"
     ]),
