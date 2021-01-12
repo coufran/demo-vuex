@@ -20,11 +20,16 @@ const store = new Vuex.Store({
     add(state, n) {
       state.count += n;
     }
+  },
+  actions: {
+    incrementAsync(context) {
+      setTimeout(() => {
+        context.commit("increment");
+      }, 2000);
+    }
   }
 });
 
-store.commit("increment");
-console.log(store.state.count);
 
 new Vue({
   render: h => h(App),

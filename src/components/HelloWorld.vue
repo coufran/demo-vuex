@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from 'vuex'
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 
 export default {
   name: 'HelloWorld',
@@ -20,12 +20,19 @@ export default {
   },
   created() {
     this.increment();
+    console.log(this.count);
     this.add(1000)
+    console.log(this.count);
+    this.incrementAsync();
+    console.log(this.count);
   },
   methods: {
     ...mapMutations([
         "increment",
         "add"
+    ]),
+    ...mapActions([
+        "incrementAsync"
     ])
   }
 }
